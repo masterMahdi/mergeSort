@@ -4,11 +4,14 @@
 void merge(int list[], int size, int start);
 void printl(int list[], int size);
 
-int main(){
-    int unsorted[] = {9, 15, 45, 32, 70, 1, 45, 21, 15};
-    int size = sizeof(unsorted)/sizeof(int);
-    merge(unsorted, size, 0);
-    printl(unsorted, size);
+int main(int argc, char* argv[]){
+    int* input_list = (int*)malloc((argc - 1)*sizeof(int));
+    for (int i = 1; i < argc; i++){
+        input_list[i-1] = atoi(argv[i]);
+    }
+    int size = argc - 1;
+    merge(input_list, size, 0);
+    printl(input_list, size);
 }
 
 void merge(int list[], int size, int start){
